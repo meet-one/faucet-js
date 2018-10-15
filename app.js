@@ -13,15 +13,6 @@ app.use(compression());
 //操作日期的插件
 var moment = require('moment');
 
-//HTTP Response Header
-app.use(function (req, res, next) {
-  res.setHeader('Cache-Control', 'private, no-store, no-cache, must-revalidate, max-age=0');
-  res.setHeader('Content-Type', 'text/html; charset=UTF-8');
-  res.setHeader('transfer-encoding', 'chunked');
-  next();
-});
-
-
 Eos = require('eosjs');
 config = {
   chainId: 'd5939d04aeea3cfa82a0d2ba341cc80f4d24781d93b1d6608b5d9afd54bfbe0a',
@@ -86,6 +77,24 @@ app.get('/newaccount', function (req, res) {
     });
 
   });
+});
+
+// get more 1000 MEETONE token
+app.get('/get_token', function (req, res) {
+  var newAccountName = req.query.name;
+
+  eos.transaction(function (tr) {
+    tr.transfer({
+      from: faucetAccount,
+      to: newAccountName,
+      quantity: "1000.0000 MEETONE",
+      memo: "from eosio.faucet"
+    });
+  }).catch(function (result) {
+    console.log(result);
+    res.send(result.toString());
+  });
+
 });
 
 var port = 6677;
