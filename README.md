@@ -14,12 +14,6 @@ npm i -d
 node app.js
 ```
 
-## Start with PM2
-
-```
-npm install --D; NODE_ENV=production PORT=6677 pm2 start process.json --only node-faucet-production
-```
-
 ## Test
 
 ```
