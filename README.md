@@ -1,7 +1,7 @@
 # faucet-js
 
 
-## install
+## Install
 
 ```
 cd faucet-js
