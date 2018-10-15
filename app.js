@@ -90,6 +90,8 @@ app.get('/get_token', function (req, res) {
       quantity: "1000.0000 MEETONE",
       memo: "from eosio.faucet"
     });
+  }).then(function () {
+    res.send({status: 'success'});
   }).catch(function (result) {
     console.log(result);
     res.send(result.toString());
