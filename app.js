@@ -69,7 +69,8 @@ app.get('/newaccount', function (req, res) {
     }).then(function () {
       res.send({
         accountName: newAccountName,
-        publicKey: publicKey
+        publicKey: publicKey,
+        privateKey: privkey,
       });
     }).catch(function (result) {
       console.log(result);
