@@ -5,7 +5,7 @@
 
 ```
 cd faucet-js
-npm i -d
+yarn add eosjs
 ```
 
 ## Start
